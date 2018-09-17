@@ -7,15 +7,13 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Moment from 'moment';
 import Admin from './Admin';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
-      masterTicketList: {},
       selectedTicket: null
     };
     this.handleChangingSelectedTicket = this.handleChangingSelectedTicket.bind(this);
@@ -33,11 +31,11 @@ class App extends React.Component {
   }
 
   updateTicketElapsedWaitTime() {
-    var newMasterTicketList = Object.assign({}, this.state.masterTicketList);
-    Object.keys(newMasterTicketList).forEach(ticketId => {
-      newMasterTicketList[ticketId].formattedWaitTime = (newMasterTicketList[ticketId].timeOpen).fromNow(true);
-    });
-    this.setState({ masterTicketList: newMasterTicketList });
+    // var newMasterTicketList = Object.assign({}, this.state.masterTicketList);
+    // Object.keys(newMasterTicketList).forEach(ticketId => {
+    //   newMasterTicketList[ticketId].formattedWaitTime = (newMasterTicketList[ticketId].timeOpen).fromNow(true);
+    // });
+    // this.setState({masterTicketList: newMasterTicketList});
   }
 
   handleChangingSelectedTicket(ticketId) {
@@ -45,7 +43,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.masterTicketList);
     return (
       <div>
         <Header />
@@ -61,15 +58,15 @@ class App extends React.Component {
     );
   }
 }
-  const mapStateToProps = state => {
-    return{
-      masterTicketList: state
-    }
-}
 
 App.propTypes = {
   masterTicketList: PropTypes.object
-}
+};
 
-export default withRouter (connect(mapStateToProps)(App));
+const mapStateToProps = state => {
+  return {
+    masterTicketList: state
+  };
+};
 
+export default withRouter(connect(mapStateToProps)(App));
