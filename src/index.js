@@ -10,6 +10,10 @@ import { Provider } from 'react-redux';
 
 const store = createStore(ticketListReducer);
 
+let unsubscribe = store.subscribe(() =>
+    console.log(store.getState())
+);
+
 ReactDOM.render (
     <HashRouter>
         <Provider store={store}>
