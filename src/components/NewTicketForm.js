@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
+import { connect } from 'react-redux';
 
 function NewTicketForm(props) {
+    console.log(props);
     let _names = null;
     let _location = null;
     let _issue = null;
@@ -42,4 +44,4 @@ NewTicketForm.propTypes = {
     onNewTicketCreation: PropTypes.func
 };
 
-export default NewTicketForm;
+export default connect()(NewTicketForm);
