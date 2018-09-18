@@ -31,5 +31,4 @@ class NewTicketControl extends React.Component {
   }
 }
 
-
 export default NewTicketControl;
